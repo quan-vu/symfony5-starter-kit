@@ -199,7 +199,7 @@ PGPASSWORD=main
 # ...
 ```
 
-9. Describing the Data Structure, Doctrine ORM
+8.1. Describing the Data Structure, Doctrine ORM
 
 ```shell
 symfony composer req orm
@@ -223,6 +223,13 @@ Migrate to database
 symfony console doctrine:migrations:migrate
 ```
 
+9: Setting up an Admin Backend
+
+https://symfony.com/doc/current/the-fast-track/en/9-backend.html
+
+```shell
+symfony composer req "admin"
+```
 
 Read the documentation at https://symfony.com/doc
 
