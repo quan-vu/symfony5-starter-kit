@@ -186,6 +186,26 @@ main-# \l
            |       |          |            |            | main=CTc/main
 ```
 
+Exposing Environment Variables
+
+```shell
+symfony var:export
+
+PGHOST=127.0.0.1
+PGPORT=32781
+PGDATABASE=main
+PGUSER=main
+PGPASSWORD=main
+# ...
+```
+
+9. Describing the Data Structure, Doctrine ORM
+
+```shell
+symfony composer req orm
+```
+
+
 Read the documentation at https://symfony.com/doc
 
 
