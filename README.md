@@ -205,6 +205,24 @@ PGPASSWORD=main
 symfony composer req orm
 ```
 
+Create Entity
+
+```shell
+symfony console make:entity Conference
+```
+
+Generate migrations from entity
+
+```shell
+symfony console make:migration
+```
+
+Migrate to database
+
+```shell
+symfony console doctrine:migrations:migrate
+```
+
 
 Read the documentation at https://symfony.com/doc
 
