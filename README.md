@@ -231,6 +231,14 @@ https://symfony.com/doc/current/the-fast-track/en/9-backend.html
 symfony composer req "admin"
 ```
 
+Create CRUD for an Entity
+
+```shell
+php bin/console make:admin:crud
+
+# Select Entity
+```
+
 Read the documentation at https://symfony.com/doc
 
 
