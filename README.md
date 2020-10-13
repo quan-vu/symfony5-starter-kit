@@ -2,6 +2,8 @@
 
 Symfony 5 Starter Kit is a sample for quickstart a symfony project with the most common features.
 
+With this project I create a skeleton application by jump to Symfony form Laravel.
+
 ## Quickstart
 
 1. Install a development web server
@@ -158,6 +160,31 @@ Generate a controller
 symfony console make:controller ConferenceController
 ```
 
+8. Local Database
+
+The Symfony CLI automatically detects the Docker services running for the project and exposes the environment variables that psql needs to connect to the database.
+
+Thanks to these conventions, accessing the database via symfony run is much easier:
+
+```shell
+# Start Postgres with Docker
+docker-compose up -d
+docker-compose ps
+
+# Accessing the Postgres Database
+symfony run psql
+
+main-# \l
+
+   Name    | Owner | Encoding |  Collate   |   Ctype    | Access privileges 
+-----------+-------+----------+------------+------------+-------------------
+ main      | main  | UTF8     | en_US.utf8 | en_US.utf8 | 
+ postgres  | main  | UTF8     | en_US.utf8 | en_US.utf8 | 
+ template0 | main  | UTF8     | en_US.utf8 | en_US.utf8 | =c/main          +
+           |       |          |            |            | main=CTc/main
+ template1 | main  | UTF8     | en_US.utf8 | en_US.utf8 | =c/main          +
+           |       |          |            |            | main=CTc/main
+```
 
 Read the documentation at https://symfony.com/doc
 
