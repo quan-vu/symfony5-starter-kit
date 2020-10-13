@@ -82,6 +82,40 @@ symfony book:check-requirements
 symfony server:start
 ```
 
+4. Deploy to SymfonyCloud
+
+Các symfonyCLI đã xây dựng-in hỗ trợ cho SymfonyCloud. Hãy khởi tạo một dự án SymfonyCloud:
+
+```shell
+$ symfony project:init
+```
+
+Lệnh này sẽ tạo ra một vài file cần thiết bởi SymfonyCloud, cụ thể là .symfony/services.yaml, .symfony/routes.yaml, và .symfony.cloud.yaml.
+
+Thêm chúng vào Git và cam kết:
+
+```shell
+$ git add .
+$ git commit -m"Add SymfonyCloud configuration"
+$ symfony deploy
+```
+
+5. Enable Symfony Profiler
+
+```shell
+symfony composer req profiler --dev
+```
+
+6. Enable Logging
+
+```shell
+symfony composer req debug --dev
+# symfony server:log
+```
+
+Open debug page at: https://127.0.0.1:8000/_profiler/latest?panel=request
+
+
 Read the documentation at https://symfony.com/doc
 
 
