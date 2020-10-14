@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="SymfonyApp">
+<head>
+    <meta charset="UTF-8">
+    {# <title>{{config('app.name')}}</title> #}
+    <title>{% block title %}My Application{% endblock %}</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link rel="icon" href="{{asset('favicon.png')}}" sizes="16x16 32x32" type="image/png">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    
+    <!-- AngularJS + Material -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/angular-material.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
+    {% block stylesheets %}{% endblock %}
+
+</head>
+<body class="app header-fixed sidebar-fixed">
+    {% block body %}<!-- START - block body -->
+
+    <div id="wrapper" layout="column" ng-controller="AppCtrl" ng-cloak>
+        <header id="app-header">
+            {{ include('admin/layouts/header.html.twig') }}
+        </header>
+
+        <section layout="row" flex>
+            <md-sidenav class="md-sidenav-left"
+                md-is-open="true"
+                md-component-id="left"
+                md-disable-backdrop=""
+                md-whiteframe="4">
+
+                <md-content layout-margin="">
+                    {{ include('admin/layouts/sidebar.html.twig') }}
+                </md-content>
+
+            </md-sidenav>
+            <md-content flex layout-paddin  ng-style="{'padding-left': sidenavLeftPadding}">
+                <div class="app-body">
+                    <main class="main">
+                        {% block content %}{% endblock %}
+                    </main>
+                </div>
+            </md-content>
+        </section>
+
+    </div><!-- #wrapper -->
+
+    <!-- Angular Material Dependencies -->
+    <script src="{{asset('js/angularjs/angular.min.js')}}"></script>
+    <script src="{{asset('js/angularjs/angular-animate.min.js')}}"></script>
+    <script src="{{asset('js/angularjs/angular-aria.min.js')}}"></script>
+    <script src="{{asset('js/angularjs/angular-messages.min.js')}}"></script>
+    <script src="{{asset('js/angularjs/angular-material.min.js')}}"></script>
+
+    <script type="text/javascript">
+    var SymfonyApp = angular.module('SymfonyApp', ['ngMaterial', 'ngMessages'], function($interpolateProvider){
+        /* START - Change syntax for angular to works with Symfony */
+        $interpolateProvider.startSymbol('<%');
+        $interpolateProvider.endSymbol('%>');
+        /* END - Change syntax for angular to works with Symfony */
+    }).controller('AppCtrl', function ($scope, $mdSidenav, $mdDialog) {
+        /* START App Sidenav */
+        $scope.toggleLeft = buildToggler('left');
+        $scope.sidenavLeftPadding = 260;
+        $scope.isOpenSidenavLeft = true;
+
+        function buildToggler(componentId) {
+            return function() {
+                $mdSidenav(componentId).toggle();
+
+                if($mdSidenav(componentId).isOpen()){
+                    $scope.sidenavLeftPadding = 260;
+                    $scope.isOpenSidenavLeft = true;
+                }else{
+                    $scope.sidenavLeftPadding = 0;
+                    $scope.isOpenSidenavLeft = false;
+                }
+            };
+        }
+        /* END - App Sidenav */
+
+        $scope.openMenu = function($mdMenu, ev) {
+            originatorEv = ev;
+            $mdMenu.open(ev);
+        };
+    });
+    </script>
+
+    {% block scripts %}{% endblock %}
+
+    {% endblock %}<!-- END - block body -->
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+
+<md-content>
+    <md-toolbar>
+    <div class="md-toolbar-tools">
+        <div class="navbar-brand" ng-show="isOpenSidenavLeft">
+            <a class="navbar-brand__inner" href="{{ path('admin_dashboard_index') }}">
+                {# <img class="logo" src="{{asset('images/logo.png')}}" alt="Company Logo"> #}
+                <!-- <span class="company"></span> -->
+            </a>
+        </div>
+
+        <md-button class="md-icon-button md-default" ng-click="toggleLeft()" class="md-accent">
+            <span class="material-icons">menu</span>
+        </md-button>
+
+        <div flex md-truncate></div>
+
+        <md-button id="headerChatButton" aria-label="User Chats menu" class="md-icon-button header-chats-button" onclick="openChatbox()">
+            <span class="header-chats-icon">
+                <span class="material-icons">chat</span>
+                <span class="count" style="display: none">0</span>
+            </span>
+        </md-button>
+
+        <md-menu>
+            <md-button aria-label="User loggedin menu" class="md-icon-button" ng-click="openMenu($mdMenu, $event)">
+                <span class="header-loggedin-user">
+                    <span class="material-icons">account_circle</span>
+                </span>
+            </md-button>
+            <md-menu-content class="header-user-menu-content" width="4">
+
+                <div class="header-loggedin-user-info pt-3 pb-3">
+                    <div class="text-center mb-1">
+                        <img class="user-avatar" src="{{ asset('images/user-icon-64.png') }}" />
+                    </div>
+                    {% if app.user %}
+                    <div class="text-center name mb-1">{{ app.user.username ?? 'Anonymous user' }}</div>
+                    <div class="text-center email mb-1">{{ app.user.email ?? 'Anonymous email' }}</div>
+                    {% endif %}
+                </div>
+
+                <md-menu-divider></md-menu-divider>
+
+                <md-menu-item>
+                    <md-button ng-href="{{ path('admin_profile_index') }}">
+                        <md-icon md-font-library="material-icons">account_circle</md-icon>
+                        Profile
+                    </md-button>
+                </md-menu-item>
+
+                <md-menu-divider></md-menu-divider>
+
+                <md-menu-item>
+                    <md-button onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <md-icon md-font-library="material-icons"  md-menu-align-target>launch</md-icon>
+                        Logout
+                    </md-button>
+                </md-menu-item>
+
+                <form id="logout-form" action="logout" method="POST">
+                    <input type="hidden" name="token" value="{{ csrf_token('admin-logout') }}"/>
+                </form>
+
+            </md-menu-content>
+        </md-menu>
+    </div>
+    </md-toolbar>
+<md-content>

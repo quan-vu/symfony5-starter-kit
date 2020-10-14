@@ -1,8 +1,14 @@
-# symfony5-starter-kit
+# Symfony5 Starter Kit
 
 Symfony 5 Starter Kit is a sample for quickstart a symfony project with the most common features.
 
 With this project I create a skeleton application by jump to Symfony form Laravel.
+
+## Admin Dashboard
+
+Beautiful, clean admin dashboard theme with AngularJS Material.
+
+![Symfony 5 Starter Kit Admin](public/images/symfony5-starter-kit-admin.png)
 
 ## Quickstart
 
@@ -239,7 +245,21 @@ php bin/console make:admin:crud
 # Select Entity
 ```
 
+10. Linking to CSS, JavaScript and Image Assets
 
-Read the documentation at https://symfony.com/doc
+```shell
+composer require symfony/asset
+```
 
+## Reference
 
+- https://symfony.com/doc
+- https://symfony.com/doc/current/security.html
+
+## Author
+
+Fullname: Quan Vu
+
+Website: https://quanvu.net
+
+Make with all the love in software engineering.
