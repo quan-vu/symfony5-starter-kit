@@ -256,7 +256,12 @@ composer require symfony/asset
 ```shell
 php bin/console make:migration
 php bin/console doctrine:migrations:migrate
+
+# Auto generate sample data
+php bin/console doctrine:fixtures:load
 ```
+
+
 
 
 ## Reference
