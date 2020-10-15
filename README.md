@@ -261,6 +261,21 @@ php bin/console doctrine:migrations:migrate
 php bin/console doctrine:fixtures:load
 ```
 
+12. Testing
+
+```shell
+# run all tests of the application
+
+php bin/phpunit
+
+# run all tests in the Util/ directory
+
+php bin/phpunit tests/Util
+
+# run tests for the Calculator class
+
+php bin/phpunit tests/Util/CalculatorTest.php
+```
 
 
 
