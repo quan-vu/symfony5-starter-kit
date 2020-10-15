@@ -251,6 +251,14 @@ php bin/console make:admin:crud
 composer require symfony/asset
 ```
 
+11. Migration
+
+```shell
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+```
+
+
 ## Reference
 
 - https://symfony.com/doc
